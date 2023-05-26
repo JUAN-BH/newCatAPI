@@ -29,5 +29,12 @@ export const LazyImg = ({ src, ...imgAtributtes }: props) => {
     };
   }, [src]);
 
-  return <img ref={imgRef} src={srcImg} {...imgAtributtes} />;
+  return (
+    <img
+      className="border-4 border-primaryColor rounded-xl w-72 h-72 object-cover shadow-md cursor-pointer bg-skeleton"
+      ref={imgRef}
+      src={srcImg}
+      {...imgAtributtes}
+    />
+  );
 };

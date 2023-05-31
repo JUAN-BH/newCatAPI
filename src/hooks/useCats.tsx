@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { CatImg } from "../ts/models/cat.model";
 import { getImgs } from "../services/getImages";
+import { addToFavorites } from "../services/addToFavorites";
 
-export const useCats = (numCats: number) => {
+export const useCats = (numCats = 0) => {
+  const [addFav, setAddFav] = useState<boolean>(false)
+  
   let catsInSession: CatImg[];
 
   const catsSessionActive: string | null =
@@ -27,9 +30,16 @@ export const useCats = (numCats: number) => {
     setCats([]);
   };
 
+  const addFavorite = (id:string) => {
+    setAddFav(true)
+    addToFavorites(id)
+  }
+
   return {
     cats,
     getCats,
     clearCats,
+    addFav, 
+    addFavorite
   };
 };

@@ -6,12 +6,18 @@ export const UploadCat = (): JSX.Element => {
   const formNode = useRef<HTMLFormElement>(null);
   return (
     <section>
-      <article>
-        <h2>Upload your cat image ⬆</h2>
-        <p>It will display in your favorites 😻</p>
+      <article className="p-3">
+        <h2 className="text-secondaryColor text-2xl font-semibold">
+          Upload your cat image ⬆
+        </h2>
+        <p className="text-secondaryColor mt-1">
+          It will display in your favorites 😻
+        </p>
       </article>
-      <article>
+
+      <article className="pt-4">
         <form
+          className=" flex flex-col items-center justify-center"
           ref={formNode}
           onSubmit={(e) => {
             e.preventDefault();
@@ -23,8 +29,6 @@ export const UploadCat = (): JSX.Element => {
                 uploadCat(file);
               }
             }
-            // if (file) {
-            // }
           }}
         >
           <input
@@ -33,7 +37,9 @@ export const UploadCat = (): JSX.Element => {
             value={imgValue}
             onChange={(e) => setImageValue(e.target.value)}
           />
-          <button type="submit">Add cat</button>
+          <button className="btn" type="submit">
+            Add cat
+          </button>
         </form>
       </article>
     </section>

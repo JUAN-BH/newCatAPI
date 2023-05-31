@@ -4,6 +4,10 @@
 
 @tailwind utilities;
 
+a {
+  margin: 0;
+}
+
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -12,12 +16,60 @@
 }
 ::-webkit-scrollbar-thumb {
   @apply bg-primaryColor;
-  border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
 
+.logoSize {
+  font-size: 42px;
+}
+
+.btn {
+  @apply px-3 py-2 bg-secondaryColor text-white rounded-md  hover:bg-primaryColor transition duration-200 ease-linear;
+}
+.btnForm {
+  @apply rounded-s-none px-3 py-2 bg-secondaryColor text-white rounded-md  hover:bg-primaryColor transition duration-200 ease-linear;
+}
+
 .mainH {
-  height: calc(100vh - 144px);
+  height: calc(100vh - 127px);
+}
+
+.hamburger-react {
+  z-index: 1;
+  @apply sm:hidden;
+}
+
+.footerIcons{
+  @apply w-6 h-6 object-cover 
+}
+
+.positionHeart {
+  top: calc(50% - 80px);
+  left: calc(50% - 80px);
+}
+
+@keyframes pulseHeart {
+  0% {
+    transform: scale(0);
+  }
+  25% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.8);
+  }
+  75% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+
+.pulseHeart{
+  animation: pulseHeart 0.8s linear;
+  animation-iteration-count: 1;
+
 }

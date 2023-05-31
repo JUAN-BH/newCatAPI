@@ -7,9 +7,11 @@ export const Favorites = (): JSX.Element => {
 
   return (
     <section>
-      <article>
-        <h2>Our favorites 😻</h2>
-        <p>Double tap to unfavorite 😿</p>
+      <article className="p-3">
+        <h2 className="text-secondaryColor text-2xl font-semibold">
+          Our favorites 😻
+        </h2>
+        <p className="text-secondaryColor mt-1">Double tap to unfavorite 😿</p>
       </article>
       <ImgResults>
         {favCats.map((fav) => (
@@ -17,7 +19,7 @@ export const Favorites = (): JSX.Element => {
             src={fav.imgUrl}
             key={fav.id}
             id={fav.id?.toString()}
-            onClick={(e) => {
+            onDoubleClick={(e) => {
               const target = e.target as HTMLElement;
               const id = target.id;
               removeFavorite(parseInt(id));

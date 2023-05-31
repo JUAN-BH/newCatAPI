@@ -2,5 +2,9 @@ type props = {
   children: React.ReactNode;
 };
 export const ImgResults = ({ children }: props) => {
-  return <div className="flex flex-wrap gap-5  py-5">{children}</div>;
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-5 justify-items-center pt-6 pb-5">
+      {children}
+    </div>
+  );
 };

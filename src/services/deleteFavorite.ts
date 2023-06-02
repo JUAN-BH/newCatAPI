@@ -7,7 +7,6 @@ export const deleteFavorite = async (id: CatImgFav["id"]) => {
     await API(`favourites/${id}`, {
       method: "DELETE",
     });
-    alert("The cat has been remove!");
   } catch (error) {
     if (axios.isAxiosError(error)) {
       const axiosError = error as AxiosError;

@@ -1,12 +1,17 @@
 import { useState } from "react";
 import { useCats } from "../../hooks/useCats";
-import { IconRefresh } from "@tabler/icons-react";
 import { ImgResults } from "../../global/containers/ImgResults";
 import { RandomCat } from "./components/RandomCat";
+import { useInitialContext } from "../../context/initalStateContext";
+import { LazyImg } from "../../global/components/LazyImg";
+import { FormCats } from "./components/FormCats";
 
 export const Home = (): JSX.Element => {
   const [catsInput, setCatsInput] = useState<number>(0);
+  const [imgLoading, setImgLoading] = useState<number[]>([]);
   const { cats, getCats, clearCats } = useCats(catsInput);
+  const stateData = useInitialContext();
+
   return (
     <section>
       <article className="p-3">
@@ -18,43 +23,24 @@ export const Home = (): JSX.Element => {
         </p>
       </article>
       <article>
-        <div>
-          <form
-            className="flex p-3 "
-            onSubmit={(e) => {
-              e.preventDefault();
-              getCats();
-            }}
-          >
-            <input
-              className="w-full rounded-md rounded-e-none border border-secondaryColor px-4 py-1 focus:outline-none"
-              type="number"
-              placeholder="Add many cats as you want"
-              value={catsInput}
-              onChange={(e) => {
-                const numberInput: number = parseInt(e.target.value);
-                if (numberInput >= 0) setCatsInput(parseInt(e.target.value));
-              }}
-            />
-            <button className="btnForm" type="submit">
-              Add
-            </button>
-            <button
-              type="button"
-              onClick={() => {
-                setCatsInput(0);
-                clearCats();
-              }}
-              className="ml-2 rounded-full bg-secondaryColor p-2 shadow-md transition duration-200 ease-linear hover:bg-primaryColor"
-            >
-              <IconRefresh color="white" />
-            </button>
-          </form>
-        </div>
+        <FormCats
+          catsInput={catsInput}
+          setCatsInput={setCatsInput}
+          setImgLoading={setImgLoading}
+          getCats={getCats}
+          clearCats={clearCats}
+        />
         <ImgResults>
           {cats.map((cat) => (
             <RandomCat src={cat.url} key={cat.id} catId={cat.id} />
           ))}
+          {stateData?.state.loading &&
+            imgLoading.map((load) => (
+              <LazyImg
+                key={load}
+                className="imgStyle animate-pulse border-none"
+              />
+            ))}
         </ImgResults>
       </article>
     </section>

@@ -5,13 +5,15 @@ export default {
     "./src/pages/**/*.{js,ts,jsx,tsx}",
     "./src/global/**/*.{js,ts,jsx,tsx}",
   ],
+
   theme: {
-    colors: {
-      white: "#fff",
-      skeleton: "#c3c3c3",
-      primaryColor: "#3498db",
-      secondaryColor: "rgb(39, 118, 171)",
-      disabledColor: "rgb(15, 54, 80)",
+    extend: {
+      colors: {
+        skeleton: "#c3c3c3",
+        primaryColor: "#3498db",
+        secondaryColor: "rgb(39, 118, 171)",
+        disabledColor: "rgb(15, 54, 80)",
+      },
     },
   },
   plugins: [],

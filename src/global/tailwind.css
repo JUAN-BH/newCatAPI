@@ -26,10 +26,13 @@ a {
 }
 
 .btn {
-  @apply px-3 py-2 bg-secondaryColor text-white rounded-md  hover:bg-primaryColor transition duration-200 ease-linear;
+  @apply rounded-md bg-secondaryColor px-4 py-2 text-white  transition duration-200 ease-linear hover:bg-primaryColor;
+}
+.btnFile {
+  @apply file:mr-2 file:cursor-pointer file:rounded-md file:border-0 file:bg-secondaryColor file:px-4 file:py-2 file:text-white file:transition  file:duration-200 file:ease-linear hover:file:bg-primaryColor;
 }
 .btnForm {
-  @apply rounded-s-none px-3 py-2 bg-secondaryColor text-white rounded-md  hover:bg-primaryColor transition duration-200 ease-linear;
+  @apply rounded-md rounded-s-none bg-secondaryColor px-3 py-2 text-white  transition duration-200 ease-linear hover:bg-primaryColor;
 }
 
 .mainH {
@@ -37,17 +40,29 @@ a {
 }
 
 .hamburger-react {
-  z-index: 1;
+  z-index: 11;
   @apply sm:hidden;
 }
 
-.footerIcons{
-  @apply w-6 h-6 object-cover 
+.footerIcons {
+  @apply h-6 w-6 object-cover;
 }
 
 .positionHeart {
   top: calc(50% - 80px);
   left: calc(50% - 80px);
+}
+
+.positonLoader {
+  position: absolute;
+  top: calc(50% - 16px);
+  left: calc(50% - 16px);
+}
+
+.positionModal {
+  position: absolute;
+  top: calc(50% - 144px);
+  left: calc(50% - 144px);
 }
 
 @keyframes pulseHeart {
@@ -68,8 +83,11 @@ a {
   }
 }
 
-.pulseHeart{
+.pulseHeart {
   animation: pulseHeart 0.8s linear;
   animation-iteration-count: 1;
+}
 
+.imgStyle {
+  @apply mx-auto block h-72 w-72 cursor-pointer rounded-xl border-4 border-primaryColor bg-skeleton object-cover shadow-md;
 }

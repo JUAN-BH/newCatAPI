@@ -18,6 +18,7 @@ export const FormCats = (props: PropsFormCats): JSX.Element => {
       }}
     >
       <input
+        required
         className="w-full rounded-md rounded-e-none border border-secondaryColor px-4 py-1 focus:outline-none"
         type="number"
         placeholder="Add many cats as you want"

@@ -3,8 +3,8 @@ import { IconRefresh } from "@tabler/icons-react";
 interface PropsFormCats {
   getCats: () => void;
   clearCats: () => void;
-  catsInput: number;
-  setCatsInput: React.Dispatch<React.SetStateAction<number>>;
+  catsInput: string;
+  setCatsInput: React.Dispatch<React.SetStateAction<string>>;
   setImgLoading: React.Dispatch<React.SetStateAction<number[]>>;
 }
 
@@ -23,13 +23,15 @@ export const FormCats = (props: PropsFormCats): JSX.Element => {
         placeholder="Add many cats as you want"
         value={props.catsInput}
         onChange={(e) => {
-          const numberInput: number = parseInt(e.target.value);
-          if (numberInput >= 0) props.setCatsInput(parseInt(e.target.value));
-          const newNumbers = Array.from(
-            { length: numberInput },
-            (_, index) => index + 1
-          );
-          props.setImgLoading(newNumbers);
+          if (!e.target.value.includes("-")) {
+            const numberInput: number = parseInt(e.target.value);
+            const newNumbers = Array.from(
+              { length: numberInput },
+              (_, index) => index + 1
+            );
+            props.setImgLoading(newNumbers);
+            props.setCatsInput(e.target.value);
+          }
         }}
       />
       <button className="btnForm" type="submit">

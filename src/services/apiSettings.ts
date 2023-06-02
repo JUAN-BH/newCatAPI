@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const APIKEY = "333ac102-97bb-4811-a48c-0164b1756041";
+const APIKEY = `${import.meta.env.VITE_API_KEY}`;
 const APIURL = "https://api.thecatapi.com/v1/";
 export const API = axios.create({
   baseURL: APIURL,

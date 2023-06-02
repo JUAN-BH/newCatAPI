@@ -1,6 +1,7 @@
 import { useInitialContext } from "../../context/initalStateContext";
 import { LazyImg } from "../../global/components/LazyImg";
 import { Loading } from "../../global/components/Loading";
+import { Modal } from "../../global/components/Modal";
 import { ImgResults } from "../../global/containers/ImgResults";
 import { useCatFavorites } from "../../hooks/useCatFavorites";
 
@@ -16,6 +17,7 @@ export const Favorites = (): JSX.Element => {
         <p className="mt-1 text-secondaryColor">Double tap to unfavorite 😿</p>
       </article>
       {stateData?.state.loading && <Loading />}
+      {stateData?.state.error && <Modal />}
       <ImgResults>
         {favCats.map((fav) => (
           <LazyImg

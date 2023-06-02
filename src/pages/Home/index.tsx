@@ -5,15 +5,17 @@ import { RandomCat } from "./components/RandomCat";
 import { useInitialContext } from "../../context/initalStateContext";
 import { LazyImg } from "../../global/components/LazyImg";
 import { FormCats } from "./components/FormCats";
+import { Modal } from "../../global/components/Modal";
 
 export const Home = (): JSX.Element => {
-  const [catsInput, setCatsInput] = useState<number>(0);
+  const [catsInput, setCatsInput] = useState<string>("");
   const [imgLoading, setImgLoading] = useState<number[]>([]);
   const { cats, getCats, clearCats } = useCats(catsInput);
   const stateData = useInitialContext();
 
   return (
     <section>
+      {stateData?.state.error && <Modal />}
       <article className="p-3">
         <h2 className="text-2xl font-semibold text-secondaryColor">
           Random cat images 🎲

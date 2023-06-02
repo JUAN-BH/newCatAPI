@@ -13,7 +13,7 @@ export const NotFound = () => {
         <div className="text-center">
           <h1 className="text-7xl font-bold text-primaryColor">404</h1>
           <h2 className="my-4 text-3xl font-semibold text-primaryColor">
-            PAGE NOT FOUND 😿
+            IS NAP TIME 😽💤
           </h2>
           <p className="text-xl ">
             We couldn't find the page you were looking for.

@@ -1,24 +1,33 @@
 import { useState, useEffect } from "react";
-import { getFavorites } from "../services/getFavorites";
 import { deleteFavorite } from "../services/deleteFavorite";
 import { CatImgFav } from "../ts/DTO/cat.dto";
 import { useInitialContext } from "../context/initalStateContext";
+import { CatFav } from "../ts/models/cat.model";
+import { API } from "../services/apiSettings";
 
 export const useCatFavorites = () => {
   const [favCats, setFavCats] = useState<CatImgFav[]>([]);
   const stateData = useInitialContext();
   useEffect(() => {
-    const fetchData = async () => {
+    const getFavorites = async (): Promise<CatImgFav[]> => {
       try {
         stateData?.dispatch({ type: "START_REQUEST" });
-        const rta = await getFavorites();
-        setFavCats(rta);
+        const { data } = await API<CatFav[]>("favourites");
+        const cats: CatImgFav[] = data.map((cat) => {
+          return {
+            id: cat.id,
+            imgUrl: cat.image.url,
+          };
+        });
+        setFavCats(cats);
         stateData?.dispatch({ type: "REQUEST_SUCCESS" });
+        return cats;
       } catch (error) {
         stateData?.dispatch({ type: "REQUEST_ERROR" });
+        return [];
       }
     };
-    fetchData();
+    getFavorites();
   }, []);
 
   const removeFavorite = (id: CatImgFav["id"]) => {

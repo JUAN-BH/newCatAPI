@@ -32,8 +32,8 @@ export const UploadCat = (): JSX.Element => {
           It will display in your favorites 😻
         </p>
       </article>
-
       {stateData?.state.upLoadImg && <Modal />}
+      {stateData?.state.error && <Modal />}
       <article className="pt-4">
         {imgValue.length > 0 && <LazyImg src={imgValue} />}
         {stateData?.state.loading && <Loading />}

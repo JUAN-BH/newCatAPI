@@ -4,7 +4,7 @@ import { API } from "../services/apiSettings";
 import { CatImg } from "../ts/models/cat.model";
 import { useInitialContext } from "../context/initalStateContext";
 
-export const useCats = (numCats = 0) => {
+export const useCats = (numCats = "") => {
   const stateData = useInitialContext();
   const [addFav, setAddFav] = useState<boolean>(false);
   let catsInSession: CatImg[];
@@ -78,7 +78,8 @@ export const useCats = (numCats = 0) => {
   };
 
   const getCats = async () => {
-    const rtaCats = await getImgs(numCats);
+    const inputCats = parseInt(numCats);
+    const rtaCats = await getImgs(inputCats);
     sessionStorage.setItem("catsInSession", JSON.stringify(rtaCats));
     setCats((prev: CatImg[]) => [...prev, ...rtaCats]);
   };
